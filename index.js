@@ -21,16 +21,9 @@ app.use(cors());
 
 app.post('/rsvp', (req, res) => {
     //new rsvp
-    const newRsvp = new Rsvp({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        attending: req.body.attending,
-        meal: req.body.meal,
-        party: req.body.party
-    })
-    newRsvp.save(err => {
+    Rsvp.findOneAndUpdate({_id: req.body._id}, { attending: req.body.attending, meal: req.body.meal }, { useFindAndModify: false }, err => {
         if (err) throw err
-        res.send(`Thank you ${req.body.firstName} for your RSVP!`)
+        res.sendStatus(200)
     })
 })
 
