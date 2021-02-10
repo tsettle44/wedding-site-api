@@ -23,6 +23,10 @@ const db = mongoose.connection
 //connection error
 db.on('error', console.error.bind(console, 'connection error'))
 
+app.get('/', (req, res) => {
+    res.send("Connected")
+})
+
 app.post('/rsvp', (req, res) => {
     //new rsvp
     Rsvp.findOneAndUpdate({_id: req.body._id}, { attending: req.body.attending, meal: req.body.meal }, { useFindAndModify: false }, err => {
