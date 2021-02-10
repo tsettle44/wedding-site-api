@@ -1,4 +1,5 @@
 const express = require('express')
+require('dotenv').config()
 const cors = require("cors");
 const app = express()
 
@@ -15,10 +16,8 @@ const mongoose = require("mongoose");
 const port = 3000
 //rsvp Model
 const Rsvp = require('./model/model')
-//mongo credentials
-const Cred = require('./cred')
 
-mongoose.connect( Cred, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect( process.env.MONGO, { useUnifiedTopology: true, useNewUrlParser: true })
 const db = mongoose.connection
 
 //connection error

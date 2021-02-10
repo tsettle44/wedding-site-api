@@ -1,6 +1,6 @@
 /node_modules
 package-lock.json
-cred.js
+.env
 cmd.txt
 export.csv
 import.json
