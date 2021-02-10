@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }))
 
 
 const mongoose = require("mongoose");
-const port = 3000
+const port = process.env.PORT || 3000
 //rsvp Model
 const Rsvp = require('./model/model')
 
@@ -44,5 +44,5 @@ app.get('/rsvp/:firstName/:lastName', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`App listening at ${port}`)
 })
