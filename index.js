@@ -36,7 +36,7 @@ app.post('/rsvp', (req, res) => {
 })
 
 app.get('/rsvp/:firstName/:lastName', (req, res) => {
-  Rsvp.find({firstName: req.params.firstName, lastName: req.params.lastName}, (err, guest) => {
+  Rsvp.find({firstName: req.params.firstName.trim(), lastName: req.params.lastName.trim()}, (err, guest) => {
     if (guest.length === 0) {
         res.send(guest)
         return
