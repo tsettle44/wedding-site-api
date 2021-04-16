@@ -9,7 +9,9 @@ const rsvpSchema = new Schema({
   date: { type: Date, default: Date.now },
   party: String,
   veggieChecked: {type: Boolean, default: false},
-  chickenChecked: {type: Boolean, default: false}
+  chickenChecked: {type: Boolean, default: false},
+  attendingChecked: {type: Boolean, default: false},
+  declineChecked: {type: Boolean, default: false}
 });
 
 module.exports = rsvpSchema

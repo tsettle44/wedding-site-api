@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.post('/rsvp', (req, res) => {
     //new rsvp
-    Rsvp.findOneAndUpdate({_id: req.body._id}, { attending: req.body.attending, meal: req.body.meal, veggieChecked: req.body.veggieChecked, chickenChecked: req.body.chickenChecked}, { useFindAndModify: false }, err => {
+    Rsvp.findOneAndUpdate({_id: req.body._id}, { attending: req.body.attending, meal: req.body.meal, veggieChecked: req.body.veggieChecked, chickenChecked: req.body.chickenChecked, attendingChecked: req.body.attendingChecked, declineChecked: req.body.declineChecked}, { useFindAndModify: false }, err => {
         if (err) throw err
         res.sendStatus(200)
     })
