@@ -27,6 +27,34 @@ app.get('/', (req, res) => {
     res.send("Connected")
 })
 
+app.get('/rsvp', async (req, res) => {
+  guests = await Rsvp.find({});
+
+  res.send(guests)
+
+})
+
+app.get('/rsvp/attending', async (req, res) => {
+  guests = await Rsvp.find({attending: true});
+
+  res.send(guests)
+
+})
+
+app.get('/rsvp/decline', async (req, res) => {
+  guests = await Rsvp.find({declineChecked: true});
+
+  res.send(guests)
+
+})
+
+app.get('/rsvp/no-response', async (req, res) => {
+  guests = await Rsvp.find({meal: ""}).exec();
+
+  res.send(guests)
+
+})
+
 app.post('/rsvp', (req, res) => {
     //new rsvp
     Rsvp.findOneAndUpdate({_id: req.body._id}, { attending: req.body.attending, meal: req.body.meal, veggieChecked: req.body.veggieChecked, chickenChecked: req.body.chickenChecked, attendingChecked: req.body.attendingChecked, declineChecked: req.body.declineChecked}, { useFindAndModify: false }, err => {
