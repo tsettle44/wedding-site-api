@@ -49,9 +49,14 @@ app.get('/rsvp/decline', async (req, res) => {
 })
 
 app.get('/rsvp/no-response', async (req, res) => {
-  guests = await Rsvp.find({declineChecked: "", meal: ""}).exec();
-
-  res.send(guests)
+  guests = await Rsvp.find({meal: ""}).exec();
+  guestsNo = [];
+  for (let i = 0; i <= guests.lenth(); i++) {
+    if (!guests[I].declineChecked) {
+      guestsNo.push(guests[i].declineChecked)
+    }
+  }
+  res.send(guestsNo)
 
 })
 
