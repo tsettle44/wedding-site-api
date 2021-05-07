@@ -49,7 +49,7 @@ app.get('/rsvp/decline', async (req, res) => {
 })
 
 app.get('/rsvp/no-response', async (req, res) => {
-  guests = await Rsvp.find({meal: ""}).exec();
+  guests = await Rsvp.find({attending: 0}).exec();
 
   res.send(guests)
 
