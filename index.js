@@ -49,20 +49,23 @@ app.get('/rsvp/decline', async (req, res) => {
 })
 
 app.get('/rsvp/no-response', async (req, res) => {
-  guests = await Rsvp.find({meal: ""}).exec();
-  guestsNo = [];
-  for (let i = 0; i <= guests.lenth(); i++) {
-    if (!guests[I].declineChecked) {
-      guestsNo.push(guests[i].declineChecked)
+  guests = await Rsvp.find({}).exec();
+  guestNo = [];
+  
+  for (guest in guests) {
+    console.log(guest)
+    if(guest === 0) {
+      guestNo.push(guest);
     }
   }
-  res.send(guestsNo)
+  
+  res.send(guestNo)
 
 })
 
 app.post('/rsvp', (req, res) => {
     //new rsvp
-    Rsvp.findOneAndUpdate({_id: req.body._id}, { attending: req.body.attending, date: req.body.date, meal: req.body.meal, veggieChecked: req.body.veggieChecked, chickenChecked: req.body.chickenChecked, attendingChecked: req.body.attendingChecked, declineChecked: req.body.declineChecked}, { useFindAndModify: false }, err => {
+    Rsvp.findOneAndUpdate({firstName: req.body.firstName, lastName: req.body.lastName}, { attending: req.body.attending, date: req.body.date, meal: req.body.meal, veggieChecked: req.body.veggieChecked, chickenChecked: req.body.chickenChecked, attendingChecked: req.body.attendingChecked, declineChecked: req.body.declineChecked}, { useFindAndModify: false }, err => {
         if (err) throw err
         res.sendStatus(200)
     })
