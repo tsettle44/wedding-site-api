@@ -35,7 +35,7 @@ app.get('/rsvp', async (req, res) => {
 })
 
 app.get('/rsvp/attending', async (req, res) => {
-  guests = await Rsvp.find({attending: true});
+  guests = await Rsvp.find({attending: true}).sort({ date: -1 });
 
   res.send(guests)
 
