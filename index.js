@@ -53,9 +53,8 @@ app.get('/rsvp/no-response', async (req, res) => {
   guestNo = [];
   
   for (guest in guests) {
-    console.log(guest)
-    if(guest === 0) {
-      guestNo.push(guest);
+    if(guests[guest].date === null) {
+      guestNo.push(guests[guest]);
     }
   }
   
