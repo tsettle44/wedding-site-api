@@ -42,7 +42,7 @@ app.get('/rsvp/attending', async (req, res) => {
 })
 
 app.get('/rsvp/decline', async (req, res) => {
-  guests = await Rsvp.find({declineChecked: true});
+  guests = await Rsvp.find({declineChecked: true}).sort({ date: -1 });
 
   res.send(guests)
 
