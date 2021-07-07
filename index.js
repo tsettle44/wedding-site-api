@@ -64,7 +64,7 @@ app.get('/rsvp/no-response', async (req, res) => {
 
 app.post('/rsvp', (req, res) => {
     //new rsvp
-    Rsvp.findOneAndUpdate({firstName: req.body.firstName, lastName: req.body.lastName}, { attending: req.body.attending, date: req.body.date, meal: req.body.meal, veggieChecked: req.body.veggieChecked, chickenChecked: req.body.chickenChecked, attendingChecked: req.body.attendingChecked, declineChecked: req.body.declineChecked}, { useFindAndModify: false }, err => {
+    Rsvp.findOneAndUpdate({firstName: req.body.firstName, lastName: req.body.lastName, party: req.body.party}, { attending: req.body.attending, date: req.body.date, meal: req.body.meal, veggieChecked: req.body.veggieChecked, chickenChecked: req.body.chickenChecked, attendingChecked: req.body.attendingChecked, declineChecked: req.body.declineChecked}, { useFindAndModify: false }, err => {
         if (err) throw err
         res.sendStatus(200)
     })
